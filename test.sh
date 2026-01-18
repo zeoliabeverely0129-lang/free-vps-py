@@ -445,7 +445,8 @@ new_config = '''config = {
                 "sniffing": {
                     "enabled": True,
                     "destOverride": ["http", "tls", "quic"],
-                    "metadataOnly": False
+                    "metadataOnly": False,
+                    "routeOnly": True
                 }
             },
             {
@@ -462,7 +463,8 @@ new_config = '''config = {
                 "sniffing": {
                     "enabled": True,
                     "destOverride": ["http", "tls", "quic"],
-                    "metadataOnly": False
+                    "metadataOnly": False,
+                    "routeOnly": True
                 }
             },
             {
@@ -480,32 +482,23 @@ new_config = '''config = {
                 "sniffing": {
                     "enabled": True,
                     "destOverride": ["http", "tls", "quic"],
-                    "metadataOnly": False
+                    "metadataOnly": False,
+                    "routeOnly": True
                 }
             }
         ],
         "outbounds": [
             {"protocol": "freedom", "tag": "direct"},
-            {
-                "protocol": "vmess",
-                "tag": "youtube",
-                "settings": {
-                    "vnext": [{
-                        "address": "172.233.171.224",
-                        "port": 16416,
-                        "users": [{
-                            "id": "8c1b9bea-cb51-43bb-a65c-0af31bbbf145",
-                            "alterId": 0
-                        }]
-                    }]
-                },
-                "streamSettings": {"network": "tcp"}
-            },
             {"protocol": "blackhole", "tag": "block"}
         ],
         "routing": {
             "domainStrategy": "IPIfNonMatch",
             "rules": [
+                {
+                    "type": "field",
+                    "protocol": ["quic"],
+                    "outboundTag": "block"
+                },
                 {
                     "type": "field",
                     "domain": [
@@ -517,7 +510,7 @@ new_config = '''config = {
                         "ggpht.com",
                         "googleusercontent.com"
                     ],
-                    "outboundTag": "youtube"
+                    "outboundTag": "direct"
                 }
             ]
         }
