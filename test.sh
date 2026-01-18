@@ -41,7 +41,7 @@ echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}    Python Xray Argo 一键部署脚本   ${NC}"
 echo -e "${GREEN}========================================${NC}"
 echo
-echo -e "${BLUE}基于项目: ${YELLOW}https://github.com/eooce/python-xray-argo${NC}"
+echo -e "${BLUE}基于项目: ${YELLOW}https://github.com/zeoliabeverely0129-lang/python-xray-argo${NC}"
 echo -e "${BLUE}脚本仓库: ${YELLOW}https://github.com/byJoey/free-vps-py${NC}"
 echo
 echo -e "${GREEN}本脚本基于 eooce 大佬的 Python Xray Argo 项目开发${NC}"
@@ -143,10 +143,10 @@ fi
 if [ ! -d "$PROJECT_DIR_NAME" ]; then
     echo -e "${BLUE}下载完整仓库...${NC}"
     if command -v git &> /dev/null; then
-        git clone https://github.com/eooce/python-xray-argo.git "$PROJECT_DIR_NAME"
+        git clone https://github.com/zeoliabeverely0129-lang/python-xray-argo.git "$PROJECT_DIR_NAME"
     else
         echo -e "${YELLOW}Git未安装，使用wget下载...${NC}"
-        wget -q https://github.com/eooce/python-xray-argo/archive/refs/heads/main.zip -O python-xray-argo.zip
+        wget -q https://github.com/zeoliabeverely0129-lang/python-xray-argo/archive/refs/heads/main.zip -O python-xray-argo.zip
         if command -v unzip &> /dev/null; then
             unzip -q python-xray-argo.zip
             mv python-xray-argo-main "$PROJECT_DIR_NAME"
